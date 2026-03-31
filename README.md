@@ -9,3 +9,4 @@ Tech Stack
 * **Framework**: `aiogram 3.x` (Asyncio)
 * **Translation Engine**: `deep-translator` (Google Translate API)
 * **Parallelism**: `concurrent.futures.ThreadPoolExecutor`
+* t.me/LearnEnglishGGBot
