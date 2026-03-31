@@ -57,3 +57,4 @@ if __name__ == "__main__":
         asyncio.run(main())
     except KeyboardInterrupt:
         print("Бот остановлен")
+# that's my telegram bot t.me/LearnEnglishGGBot
