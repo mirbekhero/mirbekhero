@@ -16,7 +16,7 @@ def get_bot_instance():
         print("Запуск на сервере через PROXY")
         return Bot(token=TOKEN, session=session)
     else:
-        print("💻 Запуск на локальном ПК (напрямую)")
+        print("Запуск на локальном ПК (напрямую)")
         return Bot(token=TOKEN)
 bot = get_bot_instance()
 dp = Dispatcher()
@@ -34,7 +34,7 @@ async def get_translation(text, src, dest):
 @dp.message(Command("start"))
 async def start(m: Message):
     await m.answer(
-        "👋 **Hello! I am your secure translator bot.**\n\n"
+        "**Hello! I am your secure translator bot.**\n\n"
         "I use a hidden token and automatic environment detection.",
         parse_mode="Markdown"
     )
@@ -43,7 +43,7 @@ async def translate_logic(m: Message):
     if not m.text:
         return
     if contains_bad_words(m.text):
-        await m.answer("⚠️ Profanity detected. Translation denied.")
+        await m.answer("Profanity detected. Translation denied.")
         return
     russian_chars = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
     is_russian = any(char in russian_chars for char in m.text.lower())
@@ -52,9 +52,9 @@ async def translate_logic(m: Message):
 
     try:
         translated_text = await get_translation(m.text, source_lang, target_lang)
-        await m.answer(f"🌍 **{source_lang.upper()} ➔ {target_lang.upper()}:**\n\n{translated_text}", parse_mode="Markdown")
+        await m.answer(f"**{source_lang.upper()} ➔ {target_lang.upper()}:**\n\n{translated_text}", parse_mode="Markdown")
     except Exception as e:
-        await m.answer("⚠️ Translation error. Server might be busy.")
+        await m.answer("Translation error. Server might be busy.")
 async def main():
     await bot.delete_webhook(drop_pending_updates=True)
     await dp.start_polling(bot)
